@@ -494,20 +494,41 @@ function createResultCard(type, number) {
 // SNS共有機能
 // =============================================
 
-// 共有ボタンのイベントリスナー設定
-document.getElementById('shareTwitter').addEventListener('click', shareToTwitter);
-document.getElementById('shareThreads').addEventListener('click', shareToThreads);
+// DOMContentLoaded後にイベントリスナーを設定
+document.addEventListener('DOMContentLoaded', function() {
+    const shareTwitterBtn = document.getElementById('shareTwitter');
+    const shareThreadsBtn = document.getElementById('shareThreads');
+
+    if (shareTwitterBtn) {
+        shareTwitterBtn.addEventListener('click', shareToTwitter);
+    }
+    if (shareThreadsBtn) {
+        shareThreadsBtn.addEventListener('click', shareToThreads);
+    }
+});
 
 function shareToTwitter() {
     const shareText = '数秘術自動計算ツールで私の運命数を計算しました！\n\n#数秘術 #澄音堂';
     const shareUrl = window.location.href;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
-    window.open(twitterUrl, '_blank', 'width=600,height=400');
+
+    // モバイル対応: 直接リンクに遷移
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        window.location.href = twitterUrl;
+    } else {
+        window.open(twitterUrl, '_blank', 'width=600,height=400');
+    }
 }
 
 function shareToThreads() {
     const shareText = '数秘術自動計算ツールで私の運命数を計算しました！\n\n#数秘術 #澄音堂';
     const shareUrl = window.location.href;
     const threadsUrl = `https://threads.net/intent/post?text=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
-    window.open(threadsUrl, '_blank', 'width=600,height=600');
+
+    // モバイル対応: 直接リンクに遷移
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        window.location.href = threadsUrl;
+    } else {
+        window.open(threadsUrl, '_blank', 'width=600,height=600');
+    }
 }
