@@ -489,3 +489,25 @@ function createResultCard(type, number) {
 
     return card;
 }
+
+// =============================================
+// SNS共有機能
+// =============================================
+
+// 共有ボタンのイベントリスナー設定
+document.getElementById('shareTwitter').addEventListener('click', shareToTwitter);
+document.getElementById('shareThreads').addEventListener('click', shareToThreads);
+
+function shareToTwitter() {
+    const shareText = '数秘術自動計算ツールで私の運命数を計算しました！\n\n#数秘術 #澄音堂';
+    const shareUrl = window.location.href;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+    window.open(twitterUrl, '_blank', 'width=600,height=400');
+}
+
+function shareToThreads() {
+    const shareText = '数秘術自動計算ツールで私の運命数を計算しました！\n\n#数秘術 #澄音堂';
+    const shareUrl = window.location.href;
+    const threadsUrl = `https://threads.net/intent/post?text=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
+    window.open(threadsUrl, '_blank', 'width=600,height=600');
+}

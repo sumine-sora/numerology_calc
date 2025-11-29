@@ -84,6 +84,26 @@ body {
     margin-bottom: 40px;
 }
 
+.privacy-notice {
+    background-color: #E8F4F8;
+    border-left: 4px solid #2C5F6F;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+}
+
+.privacy-notice p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #2C3E50;
+    line-height: 1.6;
+}
+
+.privacy-notice strong {
+    color: #2C5F6F;
+    font-weight: 600;
+}
+
 .input-form {
     max-width: 600px;
     margin: 0 auto;
@@ -358,17 +378,135 @@ body {
 }
 
 /* ============================================
+   共有ボタン
+   ============================================ */
+.share-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #E8E8E8;
+    text-align: center;
+}
+
+.share-label {
+    font-size: 0.95rem;
+    color: #2C5F6F;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.share-btn svg {
+    flex-shrink: 0;
+}
+
+.share-btn-twitter {
+    background-color: #000000;
+}
+
+.share-btn-twitter:hover {
+    background-color: #1a1a1a;
+}
+
+.share-btn-threads {
+    background-color: #000000;
+}
+
+.share-btn-threads:hover {
+    background-color: #1a1a1a;
+}
+
+/* ============================================
    フッター
    ============================================ */
 .footer {
     text-align: center;
-    padding: 30px 20px;
+    padding: 40px 20px;
     margin-top: auto;
+    background-color: #F5F5F0;
+    border-top: 1px solid #E8E8E8;
+}
+
+.footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.social-links {
+    margin-bottom: 20px;
+}
+
+.social-label {
+    font-size: 0.9rem;
+    color: #2C5F6F;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2C5F6F;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon-twitter:hover {
+    background-color: #000000;
+}
+
+.social-icon-instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-icon-threads:hover {
+    background-color: #000000;
 }
 
 .copyright {
     color: #7F8C8D;
     font-size: 0.9rem;
+    margin: 0;
 }
 
 /* ============================================
