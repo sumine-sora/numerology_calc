@@ -1,0 +1,15 @@
+# Development and test files
+test-calculations.html
+test-master-numbers.html
+browser-test-checklist.html
+test-report.md
+browser-test-report.md
+test_cases.md
+tickets.md
+numerology_app_requirements.md
+
+# Claude Code files
+.claude/
+
+# Reference materials
+参考）数秘術：数字の意味資料.txt
