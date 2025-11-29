@@ -508,7 +508,32 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function shareToTwitter() {
-    const shareText = '数秘術自動計算ツールで私の運命数を計算しました！\n\n#数秘術 #澄音堂';
+    // 計算結果がない場合は基本的なテキストのみ
+    if (!cachedResults) {
+        const shareText = '数秘術自動計算ツールで私の運命数を計算しました！\n\n#数秘術 #澄音堂';
+        const shareUrl = window.location.href;
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            window.location.href = twitterUrl;
+        } else {
+            window.open(twitterUrl, '_blank', 'width=600,height=400');
+        }
+        return;
+    }
+
+    // 計算結果を含めたテキストを作成
+    const shareText = `数秘術自動計算ツールで計算しました！
+
+ライフパスナンバー: ${cachedResults.lifePath}
+ディスティニーナンバー: ${cachedResults.destiny}
+ソウルナンバー: ${cachedResults.soul}
+パーソナリティナンバー: ${cachedResults.personality}
+バースデーナンバー: ${cachedResults.birthday}
+マチュリティナンバー: ${cachedResults.maturity}
+
+#数秘術 #澄音堂`;
+
     const shareUrl = window.location.href;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
 
@@ -521,7 +546,32 @@ function shareToTwitter() {
 }
 
 function shareToThreads() {
-    const shareText = '数秘術自動計算ツールで私の運命数を計算しました！\n\n#数秘術 #澄音堂';
+    // 計算結果がない場合は基本的なテキストのみ
+    if (!cachedResults) {
+        const shareText = '数秘術自動計算ツールで私の運命数を計算しました！\n\n#数秘術 #澄音堂';
+        const shareUrl = window.location.href;
+        const threadsUrl = `https://threads.net/intent/post?text=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
+
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            window.location.href = threadsUrl;
+        } else {
+            window.open(threadsUrl, '_blank', 'width=600,height=600');
+        }
+        return;
+    }
+
+    // 計算結果を含めたテキストを作成
+    const shareText = `数秘術自動計算ツールで計算しました！
+
+ライフパスナンバー: ${cachedResults.lifePath}
+ディスティニーナンバー: ${cachedResults.destiny}
+ソウルナンバー: ${cachedResults.soul}
+パーソナリティナンバー: ${cachedResults.personality}
+バースデーナンバー: ${cachedResults.birthday}
+マチュリティナンバー: ${cachedResults.maturity}
+
+#数秘術 #澄音堂`;
+
     const shareUrl = window.location.href;
     const threadsUrl = `https://threads.net/intent/post?text=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
 
