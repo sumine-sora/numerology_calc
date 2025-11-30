@@ -550,13 +550,20 @@ function shareToThreads() {
     if (!cachedResults) {
         const shareText = '数秘術自動計算ツールで私の運命数を計算しました！\n\n#数秘術 #澄音堂';
         const shareUrl = window.location.href;
-        const fullText = shareText + '\n\n' + shareUrl;
-        const threadsUrl = `https://threads.net/intent/post?text=${encodeURIComponent(fullText)}`;
 
-        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-            window.location.href = threadsUrl;
+        // モバイルの場合はWeb Share APIを試す
+        if (navigator.share && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            navigator.share({
+                text: shareText,
+                url: shareUrl
+            }).catch(() => {
+                // Web Share APIが失敗した場合はThreads URLにフォールバック
+                const fullText = shareText + '\n\n' + shareUrl;
+                window.location.href = `https://threads.net/intent/post?text=${encodeURIComponent(fullText)}`;
+            });
         } else {
-            window.open(threadsUrl, '_blank', 'width=600,height=600');
+            const fullText = shareText + '\n\n' + shareUrl;
+            window.open(`https://threads.net/intent/post?text=${encodeURIComponent(fullText)}`, '_blank', 'width=600,height=600');
         }
         return;
     }
@@ -574,13 +581,19 @@ function shareToThreads() {
 #数秘術 #澄音堂`;
 
     const shareUrl = window.location.href;
-    const fullText = shareText + '\n\n' + shareUrl;
-    const threadsUrl = `https://threads.net/intent/post?text=${encodeURIComponent(fullText)}`;
 
-    // モバイル対応: 直接リンクに遷移
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        window.location.href = threadsUrl;
+    // モバイルの場合はWeb Share APIを試す
+    if (navigator.share && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        navigator.share({
+            text: shareText,
+            url: shareUrl
+        }).catch(() => {
+            // Web Share APIが失敗した場合はThreads URLにフォールバック
+            const fullText = shareText + '\n\n' + shareUrl;
+            window.location.href = `https://threads.net/intent/post?text=${encodeURIComponent(fullText)}`;
+        });
     } else {
-        window.open(threadsUrl, '_blank', 'width=600,height=600');
+        const fullText = shareText + '\n\n' + shareUrl;
+        window.open(`https://threads.net/intent/post?text=${encodeURIComponent(fullText)}`, '_blank', 'width=600,height=600');
     }
 }
